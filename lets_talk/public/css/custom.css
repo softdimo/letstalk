@@ -1,0 +1,14 @@
+
+.footer {
+        position: absolute;
+}
+
+@media (min-width:992px) {
+    .footer {
+        position: absolute;
+    }
+}
+
+.top {
+    margin-top: -4vw;
+}

@@ -1,0 +1,13 @@
+{
+    "i18n-ally.localesPaths": [
+        "resources/lang"
+    ],
+    "bracket-pair-colorizer-2.colors": [
+        "#fafafa",
+        "#9F51B6",
+        "#F7C244",
+        "#F07850",
+        "#9CDD29",
+        "#C497D4"
+    ],
+}

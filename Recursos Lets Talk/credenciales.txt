@@ -1,0 +1,51 @@
+Administrador
+username: jvargas
+Password: juvape
+
+Entrenador
+username: jvargas1
+password: juvape1
+
+Estudiante
+username: jpenagos
+password: jpenagos
+
+GIT:
+https://github.com/juanDavidVargas/lets_talk
+
+FIGMA:
+https://www.figma.com/file/ewJtv7VwCukoDHplPmUNly/Untitled?node-id=0%3A1&t=SFIOZaC9HiovHDXd-0
+
+https://www.figma.com/files/recents-and-sharing/recently-viewed?fuid=1258161469006247910
+
+TRELLO:
+https://trello.com/b/U9wyz7VG/lets-talk
+
+Link instrucciones DataTable:
+https://www.itsolutionstuff.com/post/laravel-7-yajra-datatables-exampleexample.html
+
+===============================================================================================
+
+sebasletstalk@gmail.com
+Letstalk20052024+
+
+Crear ID de cliente de OAuth
+letstalkmeet
+
+Google Cloud Platfform Console
+https://console.cloud.google.com/apis/dashboard?authuser=6&hl=es&project=letstalkmeet-423920
+
+Eliminar Meet de Google Calendar
+https://developers.google.com/calendar/api/v3/reference/events/delete?hl=es-419
+
+calendarList
+https://developers.google.com/calendar/api/v3/reference/calendarList/list?hl=es-419
+
+FTP
+Inicio de sesión User: letsTalk
+Pwd: LetsTalk2906204*
+Dir: /home/softdimo/letstalk.softdimo.com/public
+
+Nombre de usuario de FTP: letsTalk@letstalk.softdimo.com
+Servidor FTP: ftp.softdimo.com
+Puerto FTPS explícito de FTP &:  21

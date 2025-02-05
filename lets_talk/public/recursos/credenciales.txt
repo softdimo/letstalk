@@ -1,0 +1,11 @@
+Administrador
+username: jvargas
+Password: juvape
+
+Entrenador
+username: jvargas1
+password: juvape1
+
+Estudiante
+username: jvargas2
+password: juvape2

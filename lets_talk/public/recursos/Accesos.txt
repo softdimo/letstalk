@@ -1,0 +1,54 @@
+Administrador
+username: jvargas
+Password: juvape
+
+Entrenador
+username: jvargas1
+password: juvape1
+
+Estudiante
+username: jvargas2
+password: juvape2
+
+// ======================================================================================================
+
+FIGMA:
+https://www.figma.com/file/ewJtv7VwCukoDHplPmUNly/Untitled?node-id=0%3A1&t=SFIOZaC9HiovHDXd-0
+
+// ======================================================================================================
+
+TRELLO:
+https://trello.com/b/U9wyz7VG/lets-talk
+
+// ======================================================================================================
+
+https://datatables.net/download/
+
+// ======================================================================================================
+
+GIT
+https://github.com/juanDavidVargas/lets_talk
+
+// ======================================================================================================
+
+Creo la Nueva rama a partir de la rama "main"
+git checkout -b jgmc main
+git branch jgmc
+
+Le informo al Git la creación de la nueva rama
+git push --set-upstream origin jgmc
+
+// ======================================================================================================
+
+prueba nueva rama
+
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+// ======================================================================================================
+
+
+
+// ======================================================================================================
+
+
