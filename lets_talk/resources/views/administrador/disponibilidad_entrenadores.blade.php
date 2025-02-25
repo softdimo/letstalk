@@ -12,7 +12,7 @@
             <h1 class="text-center text-uppercase">Disponibilidad Entrenadores</h1>
         @else
 
-        <h1 class="text-center text-uppercase">Trainer's Availability</h1>
+        <h1 class="text-center text-uppercase">Aprove Reservation</h1>
 
         <div class="mt-5">
             <a href="#" class="btn btn-sm btn-success"

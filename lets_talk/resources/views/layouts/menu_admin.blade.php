@@ -13,7 +13,7 @@
     </li>
 
     <li role="presentation">
-        <a href="{{route('administrador.disponibilidad_entrenadores')}}">Trainer's Availability </a>
+        <a href="{{route('administrador.disponibilidad_entrenadores')}}">Aprove Reservation</a>
     </li>
 
     <li role="presentation">
