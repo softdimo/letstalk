@@ -192,7 +192,8 @@ class AgendaEntrenadorStore implements Responsable
             if(!is_null($traer_disponibilidad) && $traer_disponibilidad != "error_datos_disp")
             {
                 //Envio del correo
-                Mail::to($datos_admin->correo)
+                Mail::to('jgmejiaco@gmail.com')
+                // Mail::to($datos_admin->correo)
                         ->send(new MailAprobacionDisponibilidad($datos_usuario,  $datos_admin, $traer_disponibilidad));
             }
         }

@@ -77,6 +77,7 @@ Route::group(['middleware' => ['verify_current_user']], function () {
     Route::post('actualizacion_masiva_diponibilidades', 'entrenador\EntrenadorController@actualizacionMasivaDiponibilidades')->name('actualizacion_masiva_diponibilidades');
     Route::get('student_resume', 'entrenador\EntrenadorController@studentResume')->name('student_resume');
     Route::post('estudiante_hoja_vida', 'entrenador\EntrenadorController@estudianteHojaVida')->name('estudiante_hoja_vida');
+    Route::post('actualizacion_individual_diponibilidades', 'entrenador\EntrenadorController@actualizacionIndividualDiponibilidad')->name('actualizacion_individual_diponibilidades');
 
     // Rutas ESTUDIANTE
     Route::resource('estudiante', 'estudiante\EstudianteController');

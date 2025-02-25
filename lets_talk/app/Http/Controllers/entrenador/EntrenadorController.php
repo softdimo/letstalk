@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Responses\entrenador\EvaluacionInternaStore;
 use App\Http\Responses\entrenador\DiponibilidadesMasivaUpdate;
+use App\Http\Responses\entrenador\DiponibilidadesIndividualUpdate;
 use App\Http\Responses\estudiante\EstudianteShow;
 use App\Traits\MetodosTrait;
 class EntrenadorController extends Controller
@@ -335,6 +336,25 @@ class EntrenadorController extends Controller
     }
 
     // ==================================================
+        
+    public function actualizacionIndividualDiponibilidad(Request $request)
+    {
+        $adminCtrl = new AdministradorController();
+        $sesion = $adminCtrl->validarVariablesSesion();
+
+        if(empty($sesion[0]) || is_null($sesion[0]) &&
+           empty($sesion[1]) || is_null($sesion[1]) &&
+           empty($sesion[2]) || is_null($sesion[2]) &&
+           empty($sesion[3]) || is_null($sesion[3]) &&
+           $sesion[2])
+        {
+            return response()->json("redirect");
+        } else {
+            return new DiponibilidadesIndividualUpdate();
+        }
+    }
+
+    // ==================================================
 
     public function studentResume(Request $request)
     {
@@ -362,6 +382,8 @@ class EntrenadorController extends Controller
         }
     }
 
+    // ==================================================
+
     public function estudianteHojaVida(Request $request)
     {
         $adminCtrl = new AdministradorController();
@@ -379,4 +401,5 @@ class EntrenadorController extends Controller
             return $estudianteShow->toResponse($request);
         }
     }
+
 }

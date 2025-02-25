@@ -542,7 +542,7 @@
                             $("#loading_ajax").addClass('ocultar');
                             Swal.fire(
                                 'Successfully!',
-                                'Event successfully created!',
+                                'Event successfully created, <br><b class="text-info">wait for the approvement!</b>!',
                                 'success'
                             );
                             setTimeout(() => {

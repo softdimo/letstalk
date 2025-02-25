@@ -8,24 +8,19 @@
     <td>{{$disponibilidad->nombres}} {{$disponibilidad->apellidos}}</td>
 
     @if(session('rol') == 2)
-    <td>
-        @if($disponibilidad->state == 1 )
-            <span class="badge badge-success"
-                    style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
-        @elseif($disponibilidad->state == 2)
-            <span class="badge badge-warning" 
-                    style="border-radius: 15px; background-color:yellow;">{{$disponibilidad->descripcion_estado}}</span>
-        @elseif($disponibilidad->state == 3)
-            <span class="badge badge-warning"
-                    style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
-        @elseif($disponibilidad->state == 11)
-            <span class="badge badge-info"
-                    style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
-        @else
-            <span class="badge badge-danger"
-                    style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
-        @endif
-    </td>
+        <td>
+            @if($disponibilidad->state == 1 )
+                <span class="badge badge-success" style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
+            @elseif($disponibilidad->state == 2)
+                <span class="badge badge-warning" style="border-radius: 15px; background-color:yellow;">{{$disponibilidad->descripcion_estado}}</span>
+            @elseif($disponibilidad->state == 3)
+                <span class="badge badge-warning" style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
+            @elseif($disponibilidad->state == 11)
+                <span class="badge badge-info" style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
+            @else
+                <span class="badge badge-danger" style="border-radius: 15px;">{{$disponibilidad->descripcion_estado}}</span>
+            @endif
+        </td>
     @endif
 
     @if(session('rol') == 2)
@@ -41,26 +36,38 @@
 
     <td>
         @if($disponibilidad->state == 1 && session('rol') == 2)
-            <a href="#" class="btn btn-sm btn-success ocultar rounded" 
+
+            <button class="btn btn-sm btn-success ocultar rounded"
                 title="Approve" id="btn_aprove_{{$disponibilidad->id}}" disabled
-                onclick="actualizarEstadoEvento(1, {{$disponibilidad->id}})">Approve</a>
+                onclick="actualizarEstadoDisponibilidad(1, {{$disponibilidad->id}})">Approve
+            </button>
         @elseif($disponibilidad->state == 2 && session('rol') == 2)
-            <a href="#" class="btn btn-sm btn-success btn-pending"
+
+            <button class="btn btn-sm btn-success btn-pending"
                 title="Approve" id="btn_aprove_{{$disponibilidad->id}}"
-                onclick="actualizarEstadoEvento(1, {{$disponibilidad->id}})">Approve</a>
-            <a href="#" class="btn btn-sm btn-warning btn-pending"
+                onclick="actualizarEstadoDisponibilidad(1, {{$disponibilidad->id}})">Approve
+            </button>
+
+            <button class="btn btn-sm btn-warning btn-pending"
                 title="Reject" id="btn_reject_{{$disponibilidad->id}}"
-                onclick="actualizarEstadoEvento(3, {{$disponibilidad->id}})">Reject</a>
-            <a href="#" class="btn btn-sm btn-danger btn-pending"
+                onclick="actualizarEstadoDisponibilidad(3, {{$disponibilidad->id}})">Reject
+            </button>
+
+            <button href="#" class="btn btn-sm btn-danger btn-pending"
                 title="Delete" id="btn_delete_{{$disponibilidad->id}}"
-                onclick="actualizarEstadoEvento(4, {{$disponibilidad->id}})">Delete</a>
+                onclick="actualizarEstadoDisponibilidad(4, {{$disponibilidad->id}})">Delete
+            </button>
         @elseif($disponibilidad->state == 3 && session('rol') == 2)
-            <a href="#" class="btn btn-sm btn-warning ocultar"
+
+            <button class="btn btn-sm btn-warning ocultar"
                 title="Reject" id="btn_reject_{{$disponibilidad->id}}" disabled
-                onclick="actualizarEstadoEvento(3, {{$disponibilidad->id}})">Reject</a>
-            <a href="#" class="btn btn-sm btn-danger"
+                onclick="actualizarEstadoDisponibilidad(3, {{$disponibilidad->id}})">Reject
+            </button>
+
+            <button class="btn btn-sm btn-danger"
                 title="Delete" id="btn_delete_{{$disponibilidad->id}}"
-                onclick="actualizarEstadoEvento(4, {{$disponibilidad->id}})">Delete</a>
+                onclick="actualizarEstadoDisponibilidad(4, {{$disponibilidad->id}})">Delete
+            </button>
         @else
             &nbsp;
         @endif

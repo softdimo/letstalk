@@ -78,170 +78,288 @@
 @stop
 
 @section('scripts')
-<script src="{{asset('DataTable/pdfmake.min.js')}}"></script>
-<script src="{{asset('DataTable/vfs_fonts.js')}}"></script>
-<script src="{{asset('DataTable/datatables.min.js')}}"></script>
+    <script src="{{asset('DataTable/pdfmake.min.js')}}"></script>
+    <script src="{{asset('DataTable/vfs_fonts.js')}}"></script>
+    <script src="{{asset('DataTable/datatables.min.js')}}"></script>
 
-<script>
-    //Variable global
-    let idEventos;
+    <script>
+        //Variable global
+        let idEventos;
 
-    $(document).ready(function()
-    {
-        setTimeout(() =>
+        $(document).ready(function()
         {
-            $("#loaderGif").hide();
-            $("#loaderGif").addClass('ocultar');
-        }, 1500);
-
-        $('#tbl_availability').DataTable({
-            'ordering': false
-            , "lengthMenu": [
-                [10, 25, 50, 100, -1]
-                , [10, 25, 50, 100, 'ALL']
-            ]
-            , dom: 'Blfrtip'
-            , "info": "Showing page _PAGE_ de _PAGES_"
-            , "infoEmpty": "No hay registros"
-            , "buttons": [{
-                    extend: 'copyHtml5'
-                    , text: 'Copiar'
-                    , className: 'waves-effect waves-light btn-rounded btn-sm btn-primary'
-                    , init: function(api, node, config) {
-                        $(node).removeClass('dt-button')
-                    }
-                }
-                , {
-                    extend: 'excelHtml5'
-                    , text: 'Excel'
-                    , className: 'waves-effect waves-light btn-rounded btn-sm btn-primary'
-                    , init: function(api, node, config) {
-                        $(node).removeClass('dt-button')
-                    }
-                }
-            , ]
-        });
-    });
-
-    $('#select_pending').on('change', function()
-    {
-        if ($('#select_pending').is(':checked'))
-        {
-            checked = $('#select_pending').is(':checked');
-
-            if (checked == true)
+            setTimeout(() =>
             {
-                $('.checke').prop('checked', true);
-                $('.btn-pending').hide();
+                $("#loaderGif").hide();
+                $("#loaderGif").addClass('ocultar');
+            }, 1500);
 
-                idEventos = $("input:checkbox[class^='checke']:checked").map(function() {
-                    return parseInt($(this).val());
-                }).get();
-            }
-
-        } else
-        {
-            $('.checke').prop('checked', false);
-            $('.btn-pending').show();
-        }
-    });
-
-    function actualizacionMasiva(id_estado)
-    {
-        if(idEventos == [] || idEventos == undefined)
-        {
-            Swal.fire(
-                'Error',
-                'Please, select the availabilities that you want to approve, reject or delete',
-                'error'
-            );
-
-            return;
-
-        } else
-        {
-            $.ajax({
-                async: true,
-                url: "{{route('actualizacion_masiva_diponibilidades')}}",
-                type: "POST",
-                dataType: "JSON",
-                data: {
-                    "idEstado": id_estado,
-                    "idsDisponibilidades": idEventos
-                },
-                beforeSend: function()
-                {
-                    $("#loaderGif").show();
-                    $("#loaderGif").removeClass('ocultar');
-                },
-                success: function(response)
-                {
-                    if(response == "redirect")
-                    {
-                        $("#loaderGif").hide();
-                        $("#loaderGif").addClass('ocultar');
-                        window.location.href = `${window.location.hostname}:${window.location.port}`;
-                        return;
+            $('#tbl_availability').DataTable({
+                'ordering': false
+                , "lengthMenu": [
+                    [10, 25, 50, 100, -1]
+                    , [10, 25, 50, 100, 'ALL']
+                ]
+                , dom: 'Blfrtip'
+                , "info": "Showing page _PAGE_ de _PAGES_"
+                , "infoEmpty": "No hay registros"
+                , "buttons": [{
+                        extend: 'copyHtml5'
+                        , text: 'Copiar'
+                        , className: 'waves-effect waves-light btn-rounded btn-sm btn-primary'
+                        , init: function(api, node, config) {
+                            $(node).removeClass('dt-button')
+                        }
                     }
-
-                    if(response == "exito")
-                    {
-                        $("#loaderGif").hide();
-                        $("#loaderGif").addClass('ocultar');
-                        Swal.fire({
-                            position: 'center'
-                            , title: 'Success!'
-                            , html: 'Availabities updated successfully!'
-                            , icon: 'success'
-                            , type: 'success'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , timer: 3000
-                        });
-
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 3500);
+                    , {
+                        extend: 'excelHtml5'
+                        , text: 'Excel'
+                        , className: 'waves-effect waves-light btn-rounded btn-sm btn-primary'
+                        , init: function(api, node, config) {
+                            $(node).removeClass('dt-button')
+                        }
                     }
-
-                    if(response =="error")
-                    {
-                        $("#loaderGif").hide();
-                        $("#loaderGif").addClass('ocultar');
-                        Swal.fire({
-                            position: 'center'
-                            , title: 'Error!'
-                            , html: 'An error occurred, contact support!'
-                            , icon: 'error'
-                            , type: 'error'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , timer: 3000
-                        });
-
-                        return;
-                    }
-
-                    if(response =="error_exception")
-                    {
-                        $("#loaderGif").hide();
-                        $("#loaderGif").addClass('ocultar');
-                        Swal.fire({
-                            position: 'center'
-                            , title: 'Error!'
-                            , html: 'An error occurred, contact support!'
-                            , icon: 'error'
-                            , type: 'error'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , timer: 3000
-                        });
-
-                        return;
-                    }
-                }
+                , ]
             });
+        });
+
+        $('#select_pending').on('change', function()
+        {
+            if ($('#select_pending').is(':checked'))
+            {
+                checked = $('#select_pending').is(':checked');
+
+                if (checked == true)
+                {
+                    $('.checke').prop('checked', true);
+                    $('.btn-pending').hide();
+
+                    idEventos = $("input:checkbox[class^='checke']:checked").map(function() {
+                        return parseInt($(this).val());
+                    }).get();
+                }
+
+            } else
+            {
+                $('.checke').prop('checked', false);
+                $('.btn-pending').show();
+            }
+        });
+
+        function actualizacionMasiva(id_estado)
+        {
+            if(idEventos == [] || idEventos == undefined)
+            {
+                Swal.fire(
+                    'Error',
+                    'Please, select the availabilities that you want to approve, reject or delete',
+                    'error'
+                );
+
+                return;
+
+            } else
+            {
+                $.ajax({
+                    async: true,
+                    url: "{{route('actualizacion_masiva_diponibilidades')}}",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        "idEstado": id_estado,
+                        "idsDisponibilidades": idEventos
+                    },
+                    beforeSend: function()
+                    {
+                        $("#loaderGif").show();
+                        $("#loaderGif").removeClass('ocultar');
+                    },
+                    success: function(response)
+                    {
+                        if(response == "redirect")
+                        {
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+                            window.location.href = `${window.location.hostname}:${window.location.port}`;
+                            return;
+                        }
+
+                        if(response == "exito")
+                        {
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+                            Swal.fire({
+                                position: 'center'
+                                , title: 'Success!'
+                                , html: 'Availabities updated successfully!'
+                                , icon: 'success'
+                                , type: 'success'
+                                , showCancelButton: false
+                                , showConfirmButton: false
+                                , timer: 3000
+                            });
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 3500);
+                        }
+
+                        if(response =="error")
+                        {
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+                            Swal.fire({
+                                position: 'center'
+                                , title: 'Error!'
+                                , html: 'An error occurred, contact support!'
+                                , icon: 'error'
+                                , type: 'error'
+                                , showCancelButton: false
+                                , showConfirmButton: false
+                                , timer: 3000
+                            });
+
+                            return;
+                        }
+
+                        if(response =="error_exception")
+                        {
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+                            Swal.fire({
+                                position: 'center'
+                                , title: 'Error!'
+                                , html: 'An error occurred, contact support!'
+                                , icon: 'error'
+                                , type: 'error'
+                                , showCancelButton: false
+                                , showConfirmButton: false
+                                , timer: 3000
+                            });
+
+                            return;
+                        }
+                    }
+                });
+            }
         }
-    }
-</script>
+
+        // =======================================================================
+
+        function actualizarEstadoDisponibilidad(idEstado, idDisponibilidad)
+        {
+            const checkbox = $('input[id^="availability_pending_"]');
+
+            if (checkbox.length) {
+                const isChecked = checkbox.prop("checked"); // Verifica si está marcado
+
+                if (isChecked == false) {
+                    if (idEstado == 1) {
+                        Swal.fire(
+                            'Error',
+                            'Please, select the availabilitie you want to approve',
+                            'error'
+                        );
+                        return;
+                    } else if (idEstado == 3) {
+                        Swal.fire(
+                            'Error',
+                            'Please, select the availabilitie you want to reject',
+                            'error'
+                        );
+                        return;
+                    } else {
+                        Swal.fire(
+                            'Error',
+                            'Please, select the availabilitie you want to delete',
+                            'error'
+                        );
+                        return;
+                    }
+                } else {
+                    $.ajax({
+                        async: true,
+                        url: "{{route('actualizacion_individual_diponibilidades')}}",
+                        type: "POST",
+                        dataType: "JSON",
+                        data: {
+                            "idEstado": idEstado,
+                            "idDisponibilidad": idDisponibilidad
+                        },
+                        beforeSend: function()
+                        {
+                            $("#loaderGif").show();
+                            $("#loaderGif").removeClass('ocultar');
+                        },
+                        success: function(response)
+                        {
+                            if(response == "redirect")
+                            {
+                                $("#loaderGif").hide();
+                                $("#loaderGif").addClass('ocultar');
+                                window.location.href = `${window.location.hostname}:${window.location.port}`;
+                                return;
+                            }
+
+                            if(response == "exito")
+                            {
+                                $("#loaderGif").hide();
+                                $("#loaderGif").addClass('ocultar');
+                                Swal.fire({
+                                    position: 'center'
+                                    , title: 'Success!'
+                                    , html: 'Availabitie updated successfully!'
+                                    , icon: 'success'
+                                    , type: 'success'
+                                    , showCancelButton: false
+                                    , showConfirmButton: false
+                                    , timer: 3000
+                                });
+
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 3500);
+                            }
+
+                            if(response =="error")
+                            {
+                                $("#loaderGif").hide();
+                                $("#loaderGif").addClass('ocultar');
+                                Swal.fire({
+                                    position: 'center'
+                                    , title: 'Error!'
+                                    , html: 'An error occurred, contact support!'
+                                    , icon: 'error'
+                                    , type: 'error'
+                                    , showCancelButton: false
+                                    , showConfirmButton: false
+                                    , timer: 3000
+                                });
+
+                                return;
+                            }
+
+                            if(response =="error_exception")
+                            {
+                                $("#loaderGif").hide();
+                                $("#loaderGif").addClass('ocultar');
+                                Swal.fire({
+                                    position: 'center'
+                                    , title: 'Error!'
+                                    , html: 'An error occurred, contact support!'
+                                    , icon: 'error'
+                                    , type: 'error'
+                                    , showCancelButton: false
+                                    , showConfirmButton: false
+                                    , timer: 3000
+                                });
+
+                                return;
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    </script>
 @endsection
