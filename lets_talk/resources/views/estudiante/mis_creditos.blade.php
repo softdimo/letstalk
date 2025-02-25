@@ -21,7 +21,7 @@
 
     <div class="row p-b-20 float-left" style="padding-left:3rem;padding-right:5rem;">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <a href="{{route('estudiante.index')}}" class="btn btn-primary text-uppercase">Atrás Disponibilidad</a>
+            <a href="{{route('estudiante.index')}}" class="btn btn-primary text-uppercase">Disponibilidad</a>
         </div>
     </div>
 
@@ -55,15 +55,15 @@
             <div style="display:flex; justify-content:center;">
                 <span class="badge badge-success">Total Créditos: <span class="text-white">{!!$totalCreditosDisponibles!!}</span></span>
             </div>
+
+            <div class="m-t-30 mb-5" style="padding-left:3rem;padding-right:5rem;">
+                <button type="button" class="btn btn-primary text-uppercase" onclick="comprarCreditos()">comprar créditos</button>
+            </div>
         </div>
     </div>
 
     <div class="d-flexswal m-t-30 m-b-30" style="padding-left:3rem;padding-right:5rem;">
         <button type="button" class="btn btn-primary text-uppercase" onclick="misCreditos()">Historial Compras Créditos</button>
-    </div>
-
-    <div class="m-t-30 m-b-30" style="padding-left:3rem;padding-right:5rem;">
-        <button type="button" class="btn btn-primary text-uppercase" onclick="comprarCreditos()">comprar créditos</button>
     </div>
 
     @include('layouts.loader')
