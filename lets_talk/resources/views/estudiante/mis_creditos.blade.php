@@ -32,9 +32,9 @@
                     <thead>
                         <tr class="header-table">
                             <th>Fecha Compra Paquete</th>
-                            <th>Número Paquete</th>
+                            {{-- <th>Número Paquete</th> --}}
                             <th>Créditos Paquete</th>
-                            <th>Créditos Consumidos</th>
+                            {{-- <th>Créditos Consumidos</th> --}}
                             <th>Créditos Disponibles</th>
                         </tr>
                     </thead>
@@ -42,9 +42,9 @@
                         @foreach ($misCreditos as $credito)
                             <tr>
                                 <td>{{$credito->fecha_credito}}</td>
-                                <td>{{$credito->paquete}}</td>
+                                {{-- <td>{{$credito->paquete}}</td> --}}
                                 <td>{{$credito->cantidad_total_paquete}}</td>
-                                <td>{{$credito->cantidad_consumida}}</td>
+                                {{-- <td>{{$credito->cantidad_consumida}}</td> --}}
                                 <td>{{$credito->cantidad_disponible}}</td>
                             </tr>
                         @endforeach
