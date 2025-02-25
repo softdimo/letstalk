@@ -9,7 +9,7 @@
                 <!-- Grid column -->
                 <div class="col-md-2 col-md-offset-2">
                     <h6 class="text-uppercase font-weight-bold">
-                        <a href="{{route('about_us')}}" class="text-white fw-bold" style="text-decoration: none;">About us</a>
+                        <a href="{{route('about_us')}}" class="text-white fw-bold" style="text-decoration: none;">Misión y visión</a>
                     </h6>
                 </div>
                 <!-- Grid column -->
@@ -17,7 +17,7 @@
                 <!-- Grid column -->
                 <div class="col-md-2">
                     <h6 class="text-uppercase font-weight-bold">
-                        <a href="{{route('services')}}" class="text-white fw-bold" style="text-decoration: none;">Services</a>
+                        <a href="{{route('services')}}" class="text-white fw-bold" style="text-decoration: none;">¿Quiénes somos?</a>
                     </h6>
                 </div>
                 <!-- Grid column -->

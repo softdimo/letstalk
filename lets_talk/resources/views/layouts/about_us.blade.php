@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h1 class="text-center text-uppercase">About Us</h1>
+                <h1 class="text-center text-uppercase">Misión y visión</h1>
             </div>
         </div>
 

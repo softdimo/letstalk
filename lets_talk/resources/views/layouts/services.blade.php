@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h1 class="text-center text-uppercase">Services</h1>
+                <h1 class="text-center text-uppercase">¿Quiénes somos?</h1>
             </div>
         </div>
 
