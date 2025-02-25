@@ -24,7 +24,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center text-uppercase">Trainer's Schedule</h2>
+            <h2 class="text-center text-uppercase">Availability</h2>
         </div>
     </div>
 
