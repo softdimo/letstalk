@@ -123,6 +123,8 @@
             });
         });
 
+        // =======================================================================
+
         $('#select_pending').on('change', function()
         {
             if ($('#select_pending').is(':checked'))
@@ -145,6 +147,8 @@
                 $('.btn-pending').show();
             }
         });
+
+        // =======================================================================
 
         function actualizacionMasiva(id_estado)
         {
@@ -242,124 +246,87 @@
                     }
                 });
             }
-        }
+        } // FIN actualizacionMasiva(id_estado)
 
         // =======================================================================
 
-        function actualizarEstadoDisponibilidad(idEstado, idDisponibilidad)
+        function actualizarEstadoDisponibilidad(idEstado)
         {
-            const checkbox = $('input[id^="availability_pending_"]');
+            const checkboxes = $('input[id^="availability_pending_"]:checked'); // Obtener solo los checkboxes marcados
 
-            if (checkbox.length) {
-                const isChecked = checkbox.prop("checked"); // Verifica si está marcado
-
-                if (isChecked == false) {
-                    if (idEstado == 1) {
-                        Swal.fire(
-                            'Error',
-                            'Please, select the availabilitie you want to approve',
-                            'error'
-                        );
-                        return;
-                    } else if (idEstado == 3) {
-                        Swal.fire(
-                            'Error',
-                            'Please, select the availabilitie you want to reject',
-                            'error'
-                        );
-                        return;
-                    } else {
-                        Swal.fire(
-                            'Error',
-                            'Please, select the availabilitie you want to delete',
-                            'error'
-                        );
-                        return;
-                    }
+            if (checkboxes.length === 0) {
+                let message = '';
+                if (idEstado == 1) {
+                    message = 'Please, select the availabilities you want to approve';
+                } else if (idEstado == 3) {
+                    message = 'Please, select the availabilities you want to reject';
                 } else {
-                    $.ajax({
-                        async: true,
-                        url: "{{route('actualizacion_individual_diponibilidades')}}",
-                        type: "POST",
-                        dataType: "JSON",
-                        data: {
-                            "idEstado": idEstado,
-                            "idDisponibilidad": idDisponibilidad
-                        },
-                        beforeSend: function()
-                        {
-                            $("#loaderGif").show();
-                            $("#loaderGif").removeClass('ocultar');
-                        },
-                        success: function(response)
-                        {
-                            if(response == "redirect")
-                            {
-                                $("#loaderGif").hide();
-                                $("#loaderGif").addClass('ocultar');
-                                window.location.href = `${window.location.hostname}:${window.location.port}`;
-                                return;
-                            }
-
-                            if(response == "exito")
-                            {
-                                $("#loaderGif").hide();
-                                $("#loaderGif").addClass('ocultar');
-                                Swal.fire({
-                                    position: 'center'
-                                    , title: 'Success!'
-                                    , html: 'Availabitie updated successfully!'
-                                    , icon: 'success'
-                                    , type: 'success'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , timer: 3000
-                                });
-
-                                setTimeout(() => {
-                                    window.location.reload();
-                                }, 3500);
-                            }
-
-                            if(response =="error")
-                            {
-                                $("#loaderGif").hide();
-                                $("#loaderGif").addClass('ocultar');
-                                Swal.fire({
-                                    position: 'center'
-                                    , title: 'Error!'
-                                    , html: 'An error occurred, contact support!'
-                                    , icon: 'error'
-                                    , type: 'error'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , timer: 3000
-                                });
-
-                                return;
-                            }
-
-                            if(response =="error_exception")
-                            {
-                                $("#loaderGif").hide();
-                                $("#loaderGif").addClass('ocultar');
-                                Swal.fire({
-                                    position: 'center'
-                                    , title: 'Error!'
-                                    , html: 'An error occurred, contact support!'
-                                    , icon: 'error'
-                                    , type: 'error'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , timer: 3000
-                                });
-
-                                return;
-                            }
-                        }
-                    });
+                    message = 'Please, select the availabilities you want to delete';
                 }
+
+                Swal.fire('Error', message, 'error');
+                return;
             }
-        }
+
+            checkboxes.each(function () {
+                const idDisponibilidad = $(this).val(); // Obtener el ID de cada checkbox marcado
+
+                $.ajax({
+                    async: true,
+                    url: "{{route('actualizacion_individual_diponibilidades')}}",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        "idEstado": idEstado,
+                        "idDisponibilidad": idDisponibilidad
+                    },
+                    beforeSend: function () {
+                        $("#loaderGif").show();
+                        $("#loaderGif").removeClass('ocultar');
+                    },
+                    success: function (response) {
+                        $("#loaderGif").hide();
+                        $("#loaderGif").addClass('ocultar');
+
+                        if (response == "redirect") {
+                            window.location.href = `${window.location.hostname}:${window.location.port}`;
+                            return;
+                        }
+
+                        if (response == "exito") {
+                            Swal.fire({
+                                position: 'center',
+                                title: 'Success!',
+                                html: 'Availability updated successfully!',
+                                icon: 'success',
+                                type: 'success',
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 3500);
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                title: 'Error!',
+                                html: 'An error occurred, contact support!',
+                                icon: 'error',
+                                type: 'error',
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 3500);
+                        }
+                    }
+                });
+            });
+        } // FIN actualizarEstadoDisponibilidad(idEstado)
     </script>
 @endsection

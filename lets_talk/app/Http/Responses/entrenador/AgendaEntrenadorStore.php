@@ -57,7 +57,7 @@ class AgendaEntrenadorStore implements Responsable
                         $user_id = session('usuario_id');
                     }
 
-                    $consultaDisponibilidades = $this->validarDisponibilidadUsuario($entrenador_id, $disp);
+                    $consultaDisponibilidades = $this->validarDisponibilidadUsuario($fecha_disponibilidad, $entrenador_id, $disp);
 
                     if ($consultaDisponibilidades > 0 &&
                         $consultaDisponibilidades != 'error_datos_disp')
@@ -106,7 +106,6 @@ class AgendaEntrenadorStore implements Responsable
         } catch (Exception $e)
         {
             DB::connection('mysql')->rollback();
-            dd($e);
             Logger("Error creando el evento: {$e}");
             $msgError = "exception_evento";
         }
@@ -225,12 +224,13 @@ class AgendaEntrenadorStore implements Responsable
         }
     }
 
-    public function validarDisponibilidadUsuario($usuario_id, $disp)
+    public function validarDisponibilidadUsuario($fecha_disponibilidad, $usuario_id, $disp)
     {
         try
         {
             return EventoAgendaEntrenador::where('id_usuario', $usuario_id)
                                             ->where('id_horario', $disp)
+                                            ->where('start_date', $fecha_disponibilidad)
                                             ->whereIn('state', [1,2])
                                             ->get()
                                             ->count();
