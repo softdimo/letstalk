@@ -86,24 +86,25 @@
                 dom: 'Blfrtip',
                 "info": "Showing page _PAGE_ de _PAGES_",
                 "infoEmpty": "No hay registros",
-                "buttons": [
-                    {
-                        extend: 'copyHtml5',
-                        text: 'Copiar',
-                        className: 'waves-effect waves-light btn-rounded btn-sm btn-primary',
-                        init: function(api, node, config) {
-                            $(node).removeClass('dt-button')
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        text: 'Excel',
-                        className: 'waves-effect waves-light btn-rounded btn-sm btn-primary',
-                        init: function(api, node, config) {
-                            $(node).removeClass('dt-button')
-                        }
-                    },
-                ]
+                // "buttons": [
+                //     {
+                //         extend: 'copyHtml5',
+                //         text: 'Copiar',
+                //         className: 'waves-effect waves-light btn-rounded btn-sm btn-primary',
+                //         init: function(api, node, config) {
+                //             $(node).removeClass('dt-button')
+                //         }
+                //     },
+                //     {
+                //         extend: 'excelHtml5',
+                //         text: 'Excel',
+                //         className: 'waves-effect waves-light btn-rounded btn-sm btn-primary',
+                //         init: function(api, node, config) {
+                //             $(node).removeClass('dt-button')
+                //         }
+                //     },
+                // ]
+                buttons: [] // Deshabilita los botones predeterminados
             });
         });
 
