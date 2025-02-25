@@ -8,9 +8,9 @@
         <a href="{{route('trainer.index')}}">Trainer's Sessions</a>
     </li>
 
-    <li role="presentation">
+    {{-- <li role="presentation">
         <a href="{{route('student_resume')}}">Student Resume</a>
-    </li>
+    </li> --}}
 
     <li>
         <a href="{{route('logout')}}" title="Cerrar Sesión">
