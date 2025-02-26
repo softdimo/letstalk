@@ -48,10 +48,10 @@
 
                                 @if ($credito->cantidad_disponible == 0)
                                     <td class="bg-danger">{{$credito->cantidad_disponible}}</td>
-                                @elseif($credito->cantidad_disponible >= 10)
-                                    <td class="bg-success">{{$credito->cantidad_disponible}}</td>
-                                @else
+                                @elseif($credito->cantidad_disponible > 0 && $credito->cantidad_disponible < 5 )
                                     <td class="bg-warning">{{$credito->cantidad_disponible}}</td>
+                                @else
+                                    <td class="bg-success">{{$credito->cantidad_disponible}}</td>
                                 @endif
                             </tr>
                         @endforeach
