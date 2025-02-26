@@ -51,10 +51,11 @@
                                     @php
                                         $diaHoy = Carbon::now();
                                         $diaClase = Carbon::createFromFormat('Y-m-d H:i', $sesion->start_date . ' ' . $sesion->start_time);
-                                        $diaClaseMenosUnaHora = $diaClase->copy()->subHour(); // Restamos una hora al inicio de la clase
+                                        // $diaClaseMenosUnaHora = $diaClase->copy()->subHour(); // Restamos una hora al inicio de la clase
+                                        $diaClaseMenosUnDia = $diaClase->copy()->subDay(); // Restamos 24 horas al inicio de la clase
                                     @endphp
 
-                                    @if($diaClaseMenosUnaHora > $diaHoy)
+                                    @if($diaClaseMenosUnDia > $diaHoy)
                                         <button type="button" class="text-white btn btn-warning" onclick="cancelarClase('{{$idEvento}}','{{$idInstructor}}','{{$idEstudiante}}','{{$idEstado}}')">CANCELAR</button>
                                     @endif
                                 </td>
