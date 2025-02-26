@@ -45,7 +45,14 @@
                                 {{-- <td>{{$credito->paquete}}</td> --}}
                                 <td>{{$credito->cantidad_total_paquete}}</td>
                                 {{-- <td>{{$credito->cantidad_consumida}}</td> --}}
-                                <td>{{$credito->cantidad_disponible}}</td>
+
+                                @if ($credito->cantidad_disponible == 0)
+                                    <td class="bg-danger">{{$credito->cantidad_disponible}}</td>
+                                @elseif($credito->cantidad_disponible >= 10)
+                                    <td class="bg-success">{{$credito->cantidad_disponible}}</td>
+                                @else
+                                    <td class="bg-warning">{{$credito->cantidad_disponible}}</td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
