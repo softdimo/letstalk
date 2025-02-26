@@ -105,6 +105,10 @@
 {{-- ============================================================== --}}
 
 @section('content')
+    @php
+        use Carbon\Carbon;
+    @endphp
+
     <div class="row">
         <div class="col-12">
             <h1 class="text-center text-uppercase">Trainer's Sessions</h1>
@@ -126,6 +130,9 @@
                     <tbody>
                         @foreach ($students as $student)
                             <tr>
+                                @php
+                                    // dd($student);
+                                @endphp
                                 <td>{{$student->nombre_estudiante}}</td>
                                 <td>{{$student->start_date}}</td>
                                 <td>{{$student->start_time}}</td>
@@ -134,6 +141,18 @@
                                             class="text-white"
                                             style="backgroundcolor: #434C6A; padding:0.5rem;">SEE DETAILS
                                     </button>
+
+                                    @php
+                                        $diaHoy = Carbon::now();
+                                        $diaClase = Carbon::createFromFormat('Y-m-d H:i', $student->start_date . ' ' . $student->start_time);
+                                        // $diaClaseMenosUnaHora = $diaClase->copy()->subHour(); // Restamos una hora al inicio de la clase
+                                        $diaClaseMenosUnDia = $diaClase->copy()->subDay(); // Restamos 24 horas al inicio de la clase
+                                        $idEstado = 8;
+                                    @endphp
+
+                                    {{-- @if($diaClaseMenosUnDia > $diaHoy) --}}
+                                        <button type="button" class="text-white btn btn-warning" onclick="cancelarClase('{{$student->id_trainer_horario}}','{{$student->id_instructor}}','{{$student->id_estudiante}}','{{$idEstado}}')">CANCELAR</button>
+                                    {{-- @endif --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -483,5 +502,96 @@
                 displayElement.classList.add('hidden');
             }
         }
+
+        // ============================================
+
+        function cancelarClase(idHorario, idInstructor, idEstudiante, idEstado)
+        {
+            Swal.fire({
+                title: '¿Realmente quiere cancelar esta clase?',
+                html: 'Deberá crearla nuevamente si cambia de opinión',
+                icon: 'warning',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value)
+                {
+                    $.ajax({
+                        async: true,
+                        url: "{{route('estudiante.cancelar_clase')}}",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            'id_horario': idHorario,
+                            'id_instructor': idInstructor,
+                            'id_estudiante': idEstudiante,
+                            'id_estado': idEstado
+                        },
+                        beforeSend: function() {
+                            $("#loaderGif").show();
+                            $("#loaderGif").removeClass('ocultar');
+                        },
+                        success: function(response)
+                        {
+                            console.log(response);
+
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+
+                            if(response.status === 'auth_required')
+                            {
+                                window.location.href = response.auth_url;
+                                return;
+                            }
+
+                            // Define variables para el título, texto y tipo de alerta
+                            let title, text, type;
+
+                            // Verifica el estado de la respuesta y asigna valores adecuados
+                            if (response.status === "error_link")
+                            {
+                                title = 'Error!';
+                                text = 'Link Meet NO Cancelado!';
+                                type = 'error';
+                            } else if (response.status === "error_exception")
+                            {
+                                title = 'Error!';
+                                text = 'Error Exception!';
+                                type = 'error';
+                            } else
+                            {
+                                title = 'Error!';
+                                text = 'Error al cancelar la clase!';
+                                type = 'error';
+                            }
+
+                            // Mostrar alerta con Swal.fire
+                            Swal.fire({
+                                title: title,
+                                text: text,
+                                type: type
+                            }).then(() => {
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 3000);
+                            });
+                        }, // FIN Success
+                        error: function(xhr, status, error) {
+                            $("#loaderGif").hide();
+                            $("#loaderGif").addClass('ocultar');
+
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Ocurrió un error al cancelar la clase. Inténtelo de nuevo más tarde.',
+                                type: 'error'
+                            });
+                        }
+                    }); // Fin ajax
+                } // FIN if
+            }); // FIN then de Swal.Fire
+        } // FIN cancelarClase
     </script>
 @endsection
