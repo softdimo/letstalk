@@ -150,9 +150,9 @@
                                         $idEstado = 8;
                                     @endphp
 
-                                    {{-- @if($diaClaseMenosUnDia > $diaHoy) --}}
+                                    @if($diaClaseMenosUnDia > $diaHoy)
                                         <button type="button" class="text-white btn btn-warning" onclick="cancelarClase('{{$student->id_trainer_horario}}','{{$student->id_instructor}}','{{$student->id_estudiante}}','{{$idEstado}}')">CANCELAR</button>
-                                    {{-- @endif --}}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
