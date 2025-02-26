@@ -25,7 +25,7 @@
                 <!-- Grid column -->
                 <div class="col-md-2">
                     <h6 class="text-uppercase font-weight-bold">
-                        <a href="#" class="text-white fw-bold" style="text-decoration: none;">Help</a>
+                        <a href="{{route('help')}}" class="text-white fw-bold" style="text-decoration: none;">Help</a>
                     </h6>
                 </div>
                 <!-- Grid column -->

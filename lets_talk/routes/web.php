@@ -97,6 +97,7 @@ Route::group(['middleware' => ['verify_current_user']], function () {
     // Rutas FOOTER
     Route::get('about_us', 'comunes\ComunController@aboutUs')->name('about_us');
     Route::get('services', 'comunes\ComunController@services')->name('services');
+    Route::get('help', 'comunes\ComunController@help')->name('help');
 });
 
 

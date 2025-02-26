@@ -15,4 +15,9 @@ class ComunController extends Controller
     {
         return view('layouts.services');
     }
+
+    public function help()
+    {
+        return view('layouts.help');
+    }
 }
