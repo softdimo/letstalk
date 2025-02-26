@@ -274,23 +274,23 @@
 
                     // ==============================================
 
-                    if (response[0].celular)
-                    {
-                        html += `<p class="gral-font w50">PHONE: ${response[0].celular}</p>`;
-                    }
-                    else
-                    {
-                        html += `<p class="gral-font w50">PHONE: </p>`;
-                    }
+                    // if (response[0].celular)
+                    // {
+                    //     html += `<p class="gral-font w50">PHONE: ${response[0].celular}</p>`;
+                    // }
+                    // else
+                    // {
+                    //     html += `<p class="gral-font w50">PHONE: </p>`;
+                    // }
 
-                    if (response[0].correo)
-                    {
-                        html += `<p class="gral-font w50">EMAIL: ${response[0].correo}</p>`;
-                    }
-                    else
-                    {
-                        html += `<p class="gral-font w50">EMAIL: </p>`;
-                    }
+                    // if (response[0].correo)
+                    // {
+                    //     html += `<p class="gral-font w50">EMAIL: ${response[0].correo}</p>`;
+                    // }
+                    // else
+                    // {
+                    //     html += `<p class="gral-font w50">EMAIL: </p>`;
+                    // }
 
                     // ==============================================
 
