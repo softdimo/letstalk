@@ -350,8 +350,8 @@
                                 Swal.fire({
                                     position: 'center',
                                     title: 'Successfull Process!',
-                                    html: 'The scheduling status has been successfully modified',
-                                    + ' and all availabilities associated with this schedule have also been changed.!',
+                                    html:  `The scheduling status has been successfully modified and all availabilities
+                                     associated with this schedule have also been changed.! `,
                                     icon: 'info',
                                     type: 'success',
                                     showCancelButton: false,

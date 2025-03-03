@@ -173,14 +173,14 @@
             let correo = $("#correo").val();
 
             $.ajax({
-                async: true
-                , url: "{{route('validar_correo')}}"
-                , type: "POST"
-                , dataType: "json"
-                , data: {
+                async: true,
+                url: "{{route('validar_correo')}}",
+                type: "POST",
+                dataType: "json",
+                data: {
                     'email': correo
-                }
-                , beforeSend: function() {
+                },
+                beforeSend: function() {
                     $("#loaderGif").show();
                     $("#loaderGif").removeClass('ocultar');
                 },
