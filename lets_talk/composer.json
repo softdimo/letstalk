@@ -9,15 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
-        "doctrine/dbal": "^3.8",
+        "doctrine/dbal": "2.12",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "google/apiclient": "^2.16",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
-        "laravel/framework": "^7.29",
+        "laravel/framework": "7.30.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.5",
         "laravelcollective/html": "^6.3",
+        "nesbot/carbon": "2.40",
         "owen-it/laravel-auditing": "13.0",
         "realrashid/sweet-alert": "^5.0",
         "yajra/laravel-datatables-oracle": "^9.21"

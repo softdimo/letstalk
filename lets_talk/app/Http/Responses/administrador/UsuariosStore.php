@@ -22,27 +22,27 @@ class UsuariosStore implements Responsable
         $usuarioShow = new UsuariosShow();
         $nombres = request('nombres', null);
         $apellidos = request('apellidos', null);
-        $id_tipo_documento = request('id_tipo_documento', null);
-        $numero_documento = request('numero_documento', null);
-        $id_municipio_nacimiento = request('id_municipio_nacimiento', null);
-        $fecha_nacimiento = request('fecha_nacimiento', null);
-        $genero = request('genero', null);
+        // $id_tipo_documento = request('id_tipo_documento', null);
+        // $numero_documento = request('numero_documento', null);
+        // $id_municipio_nacimiento = request('id_municipio_nacimiento', null);
+        // $fecha_nacimiento = request('fecha_nacimiento', null);
+        // $genero = request('genero', null);
         $estado = request('estado', null);
-        $telefono = request('telefono', null);
+        // $telefono = request('telefono', null);
         $celular = request('celular', null);
         $correo = request('correo', null);
-        $direccion_residencia = request('direccion_residencia', null);
-        $id_municipio_residencia = request('id_municipio_residencia', null);
+        // $direccion_residencia = request('direccion_residencia', null);
+        // $id_municipio_residencia = request('id_municipio_residencia', null);
         $id_rol = request('id_rol', null);
         $id_nivel = request('id_nivel', null);
         $id_tipo_ingles = request('id_tipo_ingles', null);
         $msgError = "";
 
-        if(strlen($numero_documento) < 6)
-        {
-            alert()->error('Info', 'The document number must be at least 6 characters long.');
-            return back();
-        }
+        // if(strlen($numero_documento) < 6)
+        // {
+        //     alert()->error('Info', 'The document number must be at least 6 characters long.');
+        //     return back();
+        // }
         
         if(isset($id_rol) && $id_rol == 3)
         {
@@ -55,14 +55,14 @@ class UsuariosStore implements Responsable
         }
 
         // Consultamos si ya existe un usuario con la cedula ingresada
-        $consulta_cedula = $usuarioShow->consultarCedula($numero_documento, $id_tipo_documento);
+        // $consulta_cedula = $usuarioShow->consultarCedula($numero_documento, $id_tipo_documento);
 
-        if(isset($consulta_cedula) && !empty($consulta_cedula) &&
-           !is_null($consulta_cedula))
-        {
-            $msgError .= "The document number already exists.";
-        } else
-        {
+        // if(isset($consulta_cedula) && !empty($consulta_cedula) &&
+        //    !is_null($consulta_cedula))
+        // {
+        //     $msgError .= "The document number already exists.";
+        // } else
+        // {
             // Contruimos el nombre de usuario
             $separar_apellidos = explode(" ", $apellidos);
             $usuario = substr($this->quitarCaracteresEspeciales(trim($nombres)), 0,1) .
@@ -76,7 +76,7 @@ class UsuariosStore implements Responsable
                 $complemento++;
             }
 
-            $fecha_nacimiento = strtotime($fecha_nacimiento);
+            // $fecha_nacimiento = strtotime($fecha_nacimiento);
             $fecha_ingreso_sistema = Carbon::now()->timestamp;
 
             DB::connection('mysql')->beginTransaction();
@@ -84,20 +84,20 @@ class UsuariosStore implements Responsable
             try {
                 $nuevo_usuario = User::create([
                     'usuario' => $usuario.$complemento,
-                    'password' => Hash::make($numero_documento),
+                    'password' => Hash::make($usuario.$complemento),
                     'nombres' => strtoupper($nombres),
                     'apellidos' => strtoupper($apellidos),
-                    'numero_documento' => $numero_documento,
-                    'id_tipo_documento' => $id_tipo_documento,
-                    'id_municipio_nacimiento' => $id_municipio_nacimiento,
-                    'fecha_nacimiento' => $fecha_nacimiento,
-                    'genero' => $genero,
+                    // 'numero_documento' => $numero_documento,
+                    // 'id_tipo_documento' => $id_tipo_documento,
+                    // 'id_municipio_nacimiento' => $id_municipio_nacimiento,
+                    // 'fecha_nacimiento' => $fecha_nacimiento,
+                    // 'genero' => $genero,
                     'estado' => $estado,
-                    'telefono' => $telefono,
+                    // 'telefono' => $telefono,
                     'celular' => $celular,
                     'correo' => $correo,
-                    'direccion_residencia' => $direccion_residencia,
-                    'id_municipio_residencia' => $id_municipio_residencia,
+                    // 'direccion_residencia' => $direccion_residencia,
+                    // 'id_municipio_residencia' => $id_municipio_residencia,
                     'fecha_ingreso_sistema' => $fecha_ingreso_sistema,
                     'id_rol' => $id_rol,
                     'id_nivel' => $nivel_ingles,
@@ -120,11 +120,12 @@ class UsuariosStore implements Responsable
 
             } catch (Exception $e)
             {
+                dd($e);
                 DB::connection('mysql')->rollback();
                 $msgError .= 'An error has occurred creating the user, try again,
                                         if the problem persists contact support.';
             }
-        }
+        // }
 
         if(isset($msgError) && !is_null($msgError) &&
             !empty($msgError) && $msgError != "")

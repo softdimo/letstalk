@@ -34,24 +34,24 @@ class UsuariosUpdate implements Responsable
         //     'session' => $request->session()->all(),
         // ]);
 
-        $usuarioShow = new UsuariosShow();
+        // $usuarioShow = new UsuariosShow();
         $nombres = request('nombres', null);
         $apellidos = request('apellidos', null);
-        $id_tipo_documento = request('id_tipo_documento', null);
-        $numero_documento = request('numero_documento', null);
-        $id_municipio_nacimiento = request('id_municipio_nacimiento', null);
-        $fecha_nacimiento = request('fecha_nacimiento', null);
-        $genero = request('genero', null);
+        // $id_tipo_documento = request('id_tipo_documento', null);
+        // $numero_documento = request('numero_documento', null);
+        // $id_municipio_nacimiento = request('id_municipio_nacimiento', null);
+        // $fecha_nacimiento = request('fecha_nacimiento', null);
+        // $genero = request('genero', null);
         $estado = request('estado', null);
-        $telefono = request('telefono', null);
+        // $telefono = request('telefono', null);
         $celular = request('celular', null);
         $correo = request('correo', null);
-        $direccion_residencia = request('direccion_residencia', null);
-        $id_municipio_residencia = request('id_municipio_residencia', null);
+        // $direccion_residencia = request('direccion_residencia', null);
+        // $id_municipio_residencia = request('id_municipio_residencia', null);
         $id_rol = request('id_rol', null);
-        $skype = request('skype', null);
-        $zoom = request('zoom', null);
-        $zoomClave = request('zoom_clave', null);
+        // $skype = request('skype', null);
+        // $zoom = request('zoom', null);
+        // $zoomClave = request('zoom_clave', null);
         $id_user = request('id_usuario', null);
         $id_nivel = request('id_nivel', null);
         $id_tipo_ingles = request('id_tipo_ingles', null);
@@ -66,15 +66,15 @@ class UsuariosUpdate implements Responsable
         }
 
         // Consultamos si ya existe un usuario con la cedula ingresada
-        $consulta_cedula = $usuarioShow->consultarCedula2($numero_documento, $id_user);
+        // $consulta_cedula = $usuarioShow->consultarCedula2($numero_documento, $id_user);
 
-        if(isset($consulta_cedula) && !empty($consulta_cedula) &&
-           !is_null($consulta_cedula))
-        {
-            alert()->info('Info', 'The document number already exists.');
-            return back();
-        } else {
-            $fecha_nacimiento = Carbon::parse($fecha_nacimiento)->timestamp;
+        // if(isset($consulta_cedula) && !empty($consulta_cedula) &&
+        //    !is_null($consulta_cedula))
+        // {
+        //     alert()->info('Info', 'The document number already exists.');
+        //     return back();
+        // } else {
+            // $fecha_nacimiento = Carbon::parse($fecha_nacimiento)->timestamp;
             DB::connection('mysql')->beginTransaction();
             try
             {
@@ -83,21 +83,21 @@ class UsuariosUpdate implements Responsable
                                         [
                                             'nombres' => strtoupper($nombres),
                                             'apellidos' => strtoupper($apellidos),
-                                            'numero_documento' => $numero_documento,
-                                            'id_tipo_documento' => $id_tipo_documento,
-                                            'id_municipio_nacimiento' => $id_municipio_nacimiento,
-                                            'fecha_nacimiento' => $fecha_nacimiento,
-                                            'genero' => $genero,
+                                            // 'numero_documento' => $numero_documento,
+                                            // 'id_tipo_documento' => $id_tipo_documento,
+                                            // 'id_municipio_nacimiento' => $id_municipio_nacimiento,
+                                            // 'fecha_nacimiento' => $fecha_nacimiento,
+                                            // 'genero' => $genero,
                                             'estado' => $estado,
-                                            'telefono' => $telefono,
+                                            // 'telefono' => $telefono,
                                             'celular' => $celular,
                                             'correo' => $correo,
-                                            'direccion_residencia' => $direccion_residencia,
-                                            'id_municipio_residencia' => $id_municipio_residencia,
+                                            // 'direccion_residencia' => $direccion_residencia,
+                                            // 'id_municipio_residencia' => $id_municipio_residencia,
                                             'id_rol' => $id_rol,
-                                            'skype' => $skype,
-                                            'zoom' => $zoom,
-                                            'zoom_clave' => $zoomClave,
+                                            // 'skype' => $skype,
+                                            // 'zoom' => $zoom,
+                                            // 'zoom_clave' => $zoomClave,
                                             'id_nivel' => $nivel_ingles,
                                             'id_tipo_ingles' => $tipo_ingles,
                                         ]
@@ -123,7 +123,7 @@ class UsuariosUpdate implements Responsable
                 alert()->error('Error', 'An error occurred updating the user, try again, if the problem persists contact support.');
                 return back();
             }
-        }
+        // }
     }
 
     public function cambiarEstado($request)

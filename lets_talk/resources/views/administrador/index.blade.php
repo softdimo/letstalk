@@ -27,8 +27,8 @@
                         <th>Name</th>
                         <th>Lastname</th>
                         <th>Username</th>
-                        <th>Document Type</th>
-                        <th>Document Number</th>
+                        {{-- <th>Document Type</th> --}}
+                        {{-- <th>Document Number</th> --}}
                         <th>Email</th>
                         <th>Role</th>
                         <th>English Level</th>
@@ -46,8 +46,8 @@
                             <td>{{$usuario->nombres}}</td>
                             <td>{{$usuario->apellidos}}</td>
                             <td>{{$usuario->usuario}}</td>
-                            <td>{{$usuario->tipo_documento}}</td>
-                            <td>{{$usuario->numero_documento}}</td>
+                            {{-- <td>{{$usuario->tipo_documento}}</td> --}}
+                            {{-- <td>{{$usuario->numero_documento}}</td> --}}
                             <td>{{$usuario->correo}}</td>
 
                             <td>{{$usuario->nombre_rol}}</td>
