@@ -109,7 +109,7 @@ class UsuariosStore implements Responsable
                 {
                     DB::connection('mysql')->commit();
                     alert()->success('Successfull Process', 'User successfully created, the user name is: '
-                                        . $nuevo_usuario->usuario . ' and the password is you document number');
+                                        . $nuevo_usuario->usuario . ' and the password is your new user');
                     return redirect()->to(route('administrador.index'));
 
                 } else
