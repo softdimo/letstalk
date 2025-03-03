@@ -193,14 +193,14 @@
                             $("#loaderGif").hide();
                             $("#loaderGif").addClass('ocultar');
                             Swal.fire({
-                                position: 'center'
-                                , title: 'Success!'
-                                , html: 'Availabities updated successfully!'
-                                , icon: 'success'
-                                , type: 'success'
-                                , showCancelButton: false
-                                , showConfirmButton: false
-                                , timer: 3000
+                                position: 'center',
+                                title: 'Success!',
+                                html: 'Availabities updated successfully!',
+                                icon: 'success',
+                                type: 'success',
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                timer: 3000,
                             });
 
                             setTimeout(() => {
@@ -213,14 +213,14 @@
                             $("#loaderGif").hide();
                             $("#loaderGif").addClass('ocultar');
                             Swal.fire({
-                                position: 'center'
-                                , title: 'Error!'
-                                , html: 'An error occurred, contact support!'
-                                , icon: 'error'
-                                , type: 'error'
-                                , showCancelButton: false
-                                , showConfirmButton: false
-                                , timer: 3000
+                                position: 'center',
+                                title: 'Error!',
+                                html: 'An error occurred, contact support!',
+                                icon: 'error',
+                                type: 'error',
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                timer: 3000,
                             });
 
                             return;
@@ -231,14 +231,14 @@
                             $("#loaderGif").hide();
                             $("#loaderGif").addClass('ocultar');
                             Swal.fire({
-                                position: 'center'
-                                , title: 'Error!'
-                                , html: 'An error occurred, contact support!'
-                                , icon: 'error'
-                                , type: 'error'
-                                , showCancelButton: false
-                                , showConfirmButton: false
-                                , timer: 3000
+                                position: 'center',
+                                title: 'Error!',
+                                html: 'An error occurred, contact support!',
+                                icon: 'error',
+                                type: 'error',
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                timer: 3000,
                             });
 
                             return;

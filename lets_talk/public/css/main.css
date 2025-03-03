@@ -588,3 +588,11 @@ footer {
 .padding-border {
 	padding-left:5rem;padding-right:5rem;
 }
+
+/* ====================================================================== */
+
+/* Inicio estilos confirmButton swal */
+.swal2-popup .swal2-styled.swal2-confirm  {
+  background-color: #21277b !important;
+}
+/* FIN estilos confirmButton swal */

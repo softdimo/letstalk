@@ -125,7 +125,7 @@ class UsuariosShow implements Responsable
         try
         {
            return DB::table('municipios')
-                        ->join('departamentos', 'departamentos.id_departamento', '=', 'municipios.id_departamento')
+                        ->leftJoin('departamentos', 'departamentos.id_departamento', '=', 'municipios.id_departamento')
                         ->select(
                                     'municipios.id_municipio',
                                     DB::raw("CONCAT(municipios.descripcion, ' - ', departamentos.descripcion) AS nombre_ciudad")
@@ -310,10 +310,10 @@ class UsuariosShow implements Responsable
         try
         {
             return DB::table('usuarios')
-            ->join('tipo_documento', 'tipo_documento.id', '=', 'usuarios.id_tipo_documento')
-            ->join('municipios', 'municipios.id_municipio', '=', 'usuarios.id_municipio_nacimiento')
-            ->join('municipios as residencia', 'residencia.id_municipio', '=', 'usuarios.id_municipio_residencia')
-            ->join('roles', 'roles.id_rol', '=', 'usuarios.id_rol')
+            ->leftJoin('tipo_documento', 'tipo_documento.id', '=', 'usuarios.id_tipo_documento')
+            ->leftJoin('municipios', 'municipios.id_municipio', '=', 'usuarios.id_municipio_nacimiento')
+            ->leftJoin('municipios as residencia', 'residencia.id_municipio', '=', 'usuarios.id_municipio_residencia')
+            ->leftJoin('roles', 'roles.id_rol', '=', 'usuarios.id_rol')
             ->leftJoin('niveles', 'niveles.id_nivel', '=', 'usuarios.id_nivel')
             ->leftJoin('tipo_ingles', 'tipo_ingles.id', '=', 'usuarios.id_tipo_ingles')
             ->leftJoin('contactos', 'contactos.id_user', '=', 'usuarios.id_user')

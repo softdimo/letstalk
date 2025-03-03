@@ -312,54 +312,53 @@
         function changeStateSchedule(idHorario)
         {
             Swal.fire({
-                position: 'center'
-                , title: 'Are you sure you want to change the state of this schedule?'
-                , text: 'You will not be able to revert this!'
-                , icon: 'warning'
-                , type: 'warning'
-                , showCancelButton: true
-                , showConfirmButton: true
-                , allowOutsideClick: false
-                , allowEscapeKey: false
-                , confirmButtonText: '<i class="fa fa-thumbs-up"></i> Yes, Change!'
-                , cancelButtonText: '<i class="fa fa-thumbs-down"></i> No, Cancel'
-                , cancelButtonColor: '#CCC'
-                , confirmButtonColor: '#0bc64a'
+                position: 'center',
+                title: 'Are you sure you want to change the state of this schedule?',
+                text: 'You will not be able to revert this!',
+                icon: 'warning',
+                type: 'warning',
+                showCancelButton: true,
+                showConfirmButton: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: '<i class="fa fa-thumbs-up"></i> Yes, Change!',
+                cancelButtonText: '<i class="fa fa-thumbs-down"></i> No, Cancel',
+                cancelButtonColor: '#CCC',
+                confirmButtonColor: '#0bc64a'
             }).then((result) =>
             {
                 if (result.value == true)
                 {
                     $.ajax({
-                        async: true
-                        , url: "{{route('disponibilidad_admin_state')}}"
-                        , type: "POST"
-                        , dataType: "json"
-                        , data: {
+                        async: true,
+                        url: "{{route('disponibilidad_admin_state')}}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
                             'id_horario': idHorario
-                        }
-                        ,
+                        },
                         beforeSend: function() {
                             $("#loaderGif").show();
                             $("#loaderGif").removeClass('ocultar');
-                        }
-                        , success: function(response)
+                        },
+                        success: function(response)
                         {
                             if (response == "success")
                             {
                                 $("#loaderGif").hide();
                                 $("#loaderGif").addClass('ocultar');
                                 Swal.fire({
-                                    position: 'center'
-                                    , title: 'Successfull Process!'
-                                    , html: 'The scheduling status has been successfully modified'
-                                    + ' and all availabilities associated with this schedule have also been changed.!'
-                                    , icon: 'info'
-                                    , type: 'success'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , allowOutsideClick: false
-                                    , allowEscapeKey: false
-                                    , timer: 3000
+                                    position: 'center',
+                                    title: 'Successfull Process!',
+                                    html: 'The scheduling status has been successfully modified',
+                                    + ' and all availabilities associated with this schedule have also been changed.!',
+                                    icon: 'info',
+                                    type: 'success',
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    timer: 3000,
                                 });
                                 setTimeout('window.location.reload()', 3500);
                                 return;
@@ -370,16 +369,16 @@
                                 $("#loaderGif").hide();
                                 $("#loaderGif").addClass('ocultar');
                                 Swal.fire({
-                                    position: 'center'
-                                    , title: 'Error!'
-                                    , html: 'There was a problem change the state of the Schedule!'
-                                    , icon: 'error'
-                                    , type: 'error'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , allowOutsideClick: false
-                                    , allowEscapeKey: false
-                                    , timer: 3000
+                                    position: 'center',
+                                    title: 'Error!',
+                                    html: 'There was a problem change the state of the Schedule!',
+                                    icon: 'error',
+                                    type: 'error',
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    timer: 3000,
                                 });
                                 return;
 
@@ -391,16 +390,16 @@
                                 $("#loaderGif").addClass('ocultar');
 
                                 Swal.fire({
-                                    position: 'center'
-                                    , title: 'Error!'
-                                    , html: 'There was a problem of database change the state of the Schedule!'
-                                    , icon: 'error'
-                                    , type: 'error'
-                                    , showCancelButton: false
-                                    , showConfirmButton: false
-                                    , allowOutsideClick: false
-                                    , allowEscapeKey: false
-                                    , timer: 3000
+                                    position: 'center',
+                                    title: 'Error!',
+                                    html: 'There was a problem of database change the state of the Schedule!',
+                                    icon: 'error',
+                                    type: 'error',
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    timer: 3000,
                                 });
                                 return;
                             }
@@ -419,16 +418,16 @@
                     $("#loaderGif").hide();
                     $("#loaderGif").addClass('ocultar');
                     Swal.fire({
-                        position: 'center'
-                        , title: 'Info!'
-                        , html: 'No changes were made!'
-                        , icon: 'info'
-                        , type: 'info'
-                        , showCancelButton: false
-                        , showConfirmButton: false
-                        , allowOutsideClick: false
-                        , allowEscapeKey: false
-                        , timer: 3000
+                        position: 'center',
+                        title: 'Info!',
+                        html: 'No changes were made!',
+                        icon: 'info',
+                        type: 'info',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        timer: 3000,
                     });
                     return;
                 }

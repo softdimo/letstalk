@@ -104,20 +104,20 @@
         }
 
         $.ajax({
-            async: true
-            , url: "{{route('validar_cedula_edicion')}}"
-            , type: "POST"
-            , dataType: "json"
-            , data: {
-                'numero_documento': num_doc
-                , 'id_usuario': id_usuario
-                , 'tipo_documento': tipo_doc
-            }
-            , beforeSend: function() {
+            async: true,
+            url: "{{route('validar_cedula_edicion')}}",
+            type: "POST",
+            dataType: "json",
+            data: {
+                'numero_documento': num_doc,
+                'id_usuario': id_usuario,
+                'tipo_documento': tipo_doc,
+            },
+            beforeSend: function() {
                 $("#loaderGif").show();
                 $("#loaderGif").removeClass('ocultar');
-            }
-            , success: function(response)
+            },
+            success: function(response)
             {
                 if (response == "existe_doc") {
                     $("#loaderGif").hide();
@@ -125,16 +125,16 @@
                     $("#numero_documento").val('');
 
                     Swal.fire({
-                        position: 'center'
-                        , title: 'Info!'
-                        , html: 'There is already a record with the document number entered!'
-                        , icon: 'info'
-                        , type: 'info'
-                        , showCancelButton: false
-                        , showConfirmButton: false
-                        , allowOutsideClick: false
-                        , allowEscapeKey: false
-                        , timer: 5000
+                        position: 'center',
+                        title: 'Info!',
+                        html: 'There is already a record with the document number entered!',
+                        icon: 'info',
+                        type: 'info',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        timer: 5000,
                     });
 
                     return;
@@ -145,16 +145,16 @@
                     $("#loaderGif").hide();
                     $("#loaderGif").addClass('ocultar');
                     Swal.fire({
-                        position: 'center'
-                        , title: 'Error!'
-                        , html: 'An error occurred, contact support!'
-                        , icon: 'error'
-                        , type: 'error'
-                        , showCancelButton: false
-                        , showConfirmButton: false
-                        , allowOutsideClick: false
-                        , allowEscapeKey: false
-                        , timer: 5000
+                        position: 'center',
+                        title: 'Error!',
+                        html: 'An error occurred, contact support!',
+                        icon: 'error',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        timer: 5000,
                     });
 
                     return;
@@ -175,19 +175,19 @@
         let id_usuario = $("#id_usuario").val();
 
         $.ajax({
-            async: true
-            , url: "{{route('validar_correo_edicion')}}"
-            , type: "POST"
-            , dataType: "json"
-            , data: {
+            async: true,
+            url: "{{route('validar_correo_edicion')}}",
+            type: "POST",
+            dataType: "json",
+            data: {
                 'email': correo
                 , 'id_usuario': id_usuario
-            }
-            , beforeSend: function() {
+            },
+            beforeSend: function() {
                 $("#loaderGif").show();
                 $("#loaderGif").removeClass('ocultar');
-            }
-            , success: function(response)
+            },
+            success: function(response)
             {
                 if (response == "existe_correo")
                 {
@@ -196,16 +196,16 @@
                     $("#correo").val('');
 
                     Swal.fire({
-                        position: 'center'
-                        , title: 'Info!'
-                        , html: 'A similar email already exists in our database!'
-                        , icon: 'info'
-                        , type: 'info'
-                        , showCancelButton: false
-                        , showConfirmButton: false
-                        , allowOutsideClick: false
-                        , allowEscapeKey: false
-                        , timer: 5000
+                        position: 'center',
+                        title: 'Info!',
+                        html: 'A similar email already exists in our database!',
+                        icon: 'info',
+                        type: 'info',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        timer: 5000,
                     });
 
                     return;
@@ -216,16 +216,16 @@
                     $("#loaderGif").hide();
                     $("#loaderGif").addClass('ocultar');
                     Swal.fire({
-                        position: 'center'
-                        , title: 'Error!'
-                        , html: 'An error occurred, contact support!'
-                        , icon: 'error'
-                        , type: 'error'
-                        , showCancelButton: false
-                        , showConfirmButton: false
-                        , allowOutsideClick: false
-                        , allowEscapeKey: false
-                        , timer: 5000
+                        position: 'center',
+                        title: 'Error!',
+                        html: 'An error occurred, contact support!',
+                        icon: 'error',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        timer: 5000,
                     });
 
                     return;

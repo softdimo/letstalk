@@ -15,8 +15,8 @@ class DisponibilidadShow implements Responsable
         try
         {
             return DB::table('evento_agenda_entrenador')
-                                    ->join('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
-                                    ->join('estados', 'estados.id_estado', '=', 'evento_agenda_entrenador.state')
+                                    ->leftJoin('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
+                                    ->leftJoin('estados', 'estados.id_estado', '=', 'evento_agenda_entrenador.state')
                                     ->select(
                                         'evento_agenda_entrenador.id',
                                         'evento_agenda_entrenador.title',
@@ -68,7 +68,7 @@ class DisponibilidadShow implements Responsable
     private function consultarDisponibilidades($idHorario, $numDia)
     {
         return DB::table('evento_agenda_entrenador')
-                ->join('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
+                ->leftJoin('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
                 ->leftJoin('tipo_ingles', 'tipo_ingles.id', '=', 'usuarios.id_tipo_ingles')
                 ->select(
                             'evento_agenda_entrenador.id_instructor',

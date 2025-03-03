@@ -103,15 +103,15 @@
             }
 
             $.ajax({
-                async: true
-                , url: "{{route('validar_cedula')}}"
-                , type: "POST"
-                , dataType: "json"
-                , data: {
+                async: true,
+                url: "{{route('validar_cedula')}}",
+                type: "POST",
+                dataType: "json",
+                data: {
                     'numero_documento': num_doc,
                     'tipo_documento': tipo_doc
-                }
-                , beforeSend: function() {
+                },
+                beforeSend: function() {
                     $("#loaderGif").show();
                     $("#loaderGif").removeClass('ocultar');
                 },
@@ -124,16 +124,16 @@
                         $("#numero_documento").val('');
 
                         Swal.fire({
-                            position: 'center'
-                            , title: 'Info!'
-                            , html: 'There is already a record with the document number entered!'
-                            , icon: 'info'
-                            , type: 'info'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , allowOutsideClick: false
-                            , allowEscapeKey: false
-                            , timer: 5000
+                            position: 'center',
+                            title: 'Info!',
+                            html: 'There is already a record with the document number entered!',
+                            icon: 'info',
+                            type: 'info',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            timer: 5000,
                         });
 
                         return;
@@ -144,16 +144,16 @@
                         $("#loaderGif").hide();
                         $("#loaderGif").addClass('ocultar');
                         Swal.fire({
-                            position: 'center'
-                            , title: 'Error!'
-                            , html: 'An error occurred, contact support!'
-                            , icon: 'error'
-                            , type: 'error'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , allowOutsideClick: false
-                            , allowEscapeKey: false
-                            , timer: 5000
+                            position: 'center',
+                            title: 'Error!',
+                            html: 'An error occurred, contact support!',
+                            icon: 'error',
+                            type: 'error',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            timer: 5000,
                         });
 
                         return;
@@ -193,16 +193,16 @@
                         $("#correo").val('');
 
                         Swal.fire({
-                            position: 'center'
-                            , title: 'Info!'
-                            , html: 'A similar email already exists in our database!'
-                            , icon: 'info'
-                            , type: 'info'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , allowOutsideClick: false
-                            , allowEscapeKey: false
-                            , timer: 5000
+                            position: 'center',
+                            title: 'Info!',
+                            html: 'A similar email already exists in our database!',
+                            icon: 'info',
+                            type: 'info',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            timer: 5000,
                         });
 
                         return;
@@ -213,16 +213,16 @@
                         $("#loaderGif").hide();
                         $("#loaderGif").addClass('ocultar');
                         Swal.fire({
-                            position: 'center'
-                            , title: 'Error!'
-                            , html: 'An error occurred, contact support!'
-                            , icon: 'error'
-                            , type: 'error'
-                            , showCancelButton: false
-                            , showConfirmButton: false
-                            , allowOutsideClick: false
-                            , allowEscapeKey: false
-                            , timer: 5000
+                            position: 'center',
+                            title: 'Error!',
+                            html: 'An error occurred, contact support!',
+                            icon: 'error',
+                            type: 'error',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            timer: 5000,
                         });
 
                         return;

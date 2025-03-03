@@ -13,10 +13,10 @@ class DisponibilidadesLibres
         try
         {
             return DB::table('evento_agenda_entrenador')
-                ->join('estados', 'estados.id_estado', '=', 'evento_agenda_entrenador.clase_estado')
-                ->join('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
-                ->join('roles', 'roles.id_rol', '=', 'usuarios.id_rol')
-                ->join('tipo_ingles', 'tipo_ingles.id', '=', 'usuarios.id_tipo_ingles')
+                ->leftJoin('estados', 'estados.id_estado', '=', 'evento_agenda_entrenador.clase_estado')
+                ->leftJoin('usuarios', 'usuarios.id_user', '=', 'evento_agenda_entrenador.id_instructor')
+                ->leftJoin('roles', 'roles.id_rol', '=', 'usuarios.id_rol')
+                ->leftJoin('tipo_ingles', 'tipo_ingles.id', '=', 'usuarios.id_tipo_ingles')
                 ->select(
                     'usuarios.id_user',
                     'usuarios.nombres',

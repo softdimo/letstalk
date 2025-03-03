@@ -32,7 +32,7 @@ class NivelesInactivar implements Responsable
 
                 // NUEVA CONSULTA
                 $queryUsuariosNivel = DB::table('usuarios')
-                                    ->join('niveles', 'niveles.id_nivel', '=', 'usuarios.id_nivel')
+                                    ->leftJoin('niveles', 'niveles.id_nivel', '=', 'usuarios.id_nivel')
                                     ->select('usuarios.id_user')
                                     ->whereNotNull('niveles.deleted_at')
                                     ->get();
